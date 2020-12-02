@@ -5,7 +5,8 @@ import {useEffect} from "react";
 
 
 function App() {
-    const todos = useSelector(state => state);
+    const todos = useSelector(state => state.todos);
+    const loading = useSelector(state => state.loading);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -14,6 +15,8 @@ function App() {
 
   return (
       <div>
+          Список дел:
+          {loading ? <div>идет загрузка...</div> : ''}
           {todos.map(todo => {
               return (
                   <div>
