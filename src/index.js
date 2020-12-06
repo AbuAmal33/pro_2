@@ -44,7 +44,9 @@ const store = createStore(reducer, applyMiddleware(thunk));
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <div className={'fon'}>
+            <App />
+        </div>
     </Provider>,
 
   document.getElementById('root')
