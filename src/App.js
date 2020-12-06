@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {loadTodos} from "./Action";
+import {loadTodos, removeTodo} from "./Action";
 import {useEffect} from "react";
 import Header from "./Header";
 
@@ -13,6 +13,10 @@ function App() {
     useEffect(() => {
         dispatch(loadTodos());
     }, [])
+
+    const handleDelete = (id) => {
+        dispatch(removeTodo(id))
+    }
 
   return (
       <div>
@@ -28,7 +32,7 @@ function App() {
                           {todo.title}
                       </div>
                       <div className={'actions'}>
-                          <button>
+                          <button onClick={() => handleDelete(todo.id)}>
                               delete
                           </button>
                       </div>

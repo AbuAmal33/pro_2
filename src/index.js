@@ -35,6 +35,16 @@ const reducer = (state = initialState, action) => {
                 todos: action.payload,
                 loading: false
             };
+        case 'delete':
+            return {
+                ...state,
+                todos: state.todos.filter((todo) => {
+                    if (todo.id === action.payload) {
+                        return false;
+                    }
+                    return true;
+                })
+            }
         default:
             return state;
     }
