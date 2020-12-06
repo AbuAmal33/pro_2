@@ -8,6 +8,7 @@
     font-size: 2em;
     font-weight: bold;
     border-bottom: 1px solid lightcoral;
+    padding-bottom: 10px;
 }
 .todo {
     display: flex;
