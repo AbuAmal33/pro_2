@@ -14,7 +14,7 @@ function App() {
     }, [])
 
   return (
-      <div>
+      <div className="fon">
           Список дел:
           {loading ? <div>идет загрузка...</div> : ''}
           {todos.map(todo => {

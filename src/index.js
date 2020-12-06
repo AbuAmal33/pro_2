@@ -4,6 +4,7 @@ import App from './App';
 import {Provider} from "react-redux";
 import {applyMiddleware, createStore} from "redux";
 import thunk from "redux-thunk";
+import './style.css'
 
 const initialState = {
     todos: [{
@@ -42,7 +43,7 @@ const reducer = (state = initialState, action) => {
 const store = createStore(reducer, applyMiddleware(thunk));
 
 ReactDOM.render(
-    <Provider className="fon" store={store}>
+    <Provider store={store}>
         <App />
     </Provider>,
 
