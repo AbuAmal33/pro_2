@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {loadTodos, removeTodo} from "./Action";
+import {loadTodos, removeTodo, checkTodo} from "./Action";
 import {useEffect} from "react";
 import Header from "./Header";
 
@@ -18,6 +18,10 @@ function App() {
         dispatch(removeTodo(id))
     }
 
+    const handleCheck = (id, completed) => {
+        dispatch(checkTodo(id, completed))
+    }
+
   return (
       <div>
           <Header />
@@ -26,7 +30,9 @@ function App() {
               return (
                   <div className={'todo'}>
                       <div>
-                          <input type={'checkbox'}/>
+                          <input type={'checkbox'}
+                                 checked={todo.completed}
+                                 onChange={() => handleCheck(todo.id, todo.completed)}/>
                       </div>
                       <div className={'title'}>
                           {todo.title}

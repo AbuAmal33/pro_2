@@ -26,3 +26,22 @@ export const removeTodo = (id) => {
             })
     }
 }
+
+export const checkTodo = (id, completed) => {
+    return function (dispatch) {
+        fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
+            method: 'patch',
+            body: JSON.stringify({completed: !completed}),
+            headers: {
+                "Content-type": "application/json"
+            }
+        })
+            .then(response => response.json())
+            .then(() => {
+                dispatch({
+                    type: 'check',
+                    payload: id
+                })
+            })
+    }
+}
