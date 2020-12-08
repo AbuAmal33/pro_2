@@ -7,12 +7,13 @@ import thunk from "redux-thunk";
 import './style.css'
 
 const initialState = {
-    todos: [{
+    todos: [
+        {
         "userId": 1,
         "id": 1,
         "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
         "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-    },
+        },
         {
             "userId": 1,
             "id": 2,
@@ -58,6 +59,19 @@ const reducer = (state = initialState, action) => {
                     return todo;
                 })
             }
+        case 'start_checking':
+            return {
+                ...state,
+                todos: state.todos.map(todo => {
+                    if (todo.id === action.payload) {
+                        return {
+                            ...todo,
+                            checking: true
+                        }
+                    }
+                    return todo;
+                })
+            }
         case 'check':
             return {
                 ...state,
@@ -65,7 +79,8 @@ const reducer = (state = initialState, action) => {
                     if (todo.id === action.payload) {
                         return {
                             ...todo,
-                            completed: !todo.completed
+                            completed: !todo.completed,
+                            checking: false
                         }
                     }
                     return todo;
