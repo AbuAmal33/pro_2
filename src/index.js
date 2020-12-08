@@ -45,6 +45,19 @@ const reducer = (state = initialState, action) => {
                     return true;
                 })
             }
+        case 'start_delete':
+            return {
+                ...state,
+                todos: state.todos.map(todo => {
+                    if (todo.id === action.payload) {
+                        return {
+                            ...todo,
+                            deleting: true
+                        }
+                    }
+                    return todo;
+                })
+            }
         case 'check':
             return {
                 ...state,

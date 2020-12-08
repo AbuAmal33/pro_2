@@ -38,7 +38,10 @@ function App() {
                           {todo.title}
                       </div>
                       <div className={'actions'}>
-                          <button onClick={() => handleDelete(todo.id)}>
+                          <button
+                              onClick={() => handleDelete(todo.id)}
+                              disabled={todo.deleting}
+                              >
                               delete
                           </button>
                       </div>
